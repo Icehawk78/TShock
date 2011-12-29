@@ -870,40 +870,40 @@ namespace TShockAPI
             if (args.Player.Index != owner)
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (dmg > 175)
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (TShock.CheckIgnores(args.Player))
             {
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (TShock.CheckProjectilePermission(args.Player, index, type))
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (args.Player.ProjectileThreshold >= TShock.Config.ProjectileThreshold)
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if ((DateTime.UtcNow - args.Player.LastThreat).TotalMilliseconds < 5000)
             {
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
@@ -938,26 +938,26 @@ namespace TShockAPI
             if (args.Player.Index != Main.projectile[index].owner)
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (TShock.CheckIgnores(args.Player))
             {
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if (TShock.CheckProjectilePermission(args.Player, index, type))
             {
                 args.Player.LastThreat = DateTime.UtcNow;
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
             if ((DateTime.UtcNow - args.Player.LastThreat).TotalMilliseconds < 5000)
             {
-                args.Player.RemoveProjectile(ident, owner);
+                args.Player.SendData(PacketTypes.ProjectileNew, "", index);
                 return true;
             }
 
